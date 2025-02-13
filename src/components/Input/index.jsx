@@ -1,10 +1,19 @@
-import { InputContainer } from "./styles";
+import { Controller } from "react-hook-form";
+import { InputContainer, Container } from "./styles";
 
-const Input = () => {
+const Input = ({name, control, rules, placeholder, type = 'text'}) => {
     return (
-        <InputContainer>
-            <input type="text" placeholder="email" />
-        </InputContainer>
+        <Controller 
+            name={name}
+            control={control}
+            rules={rules}
+            render={({ field, fieldState: { error } }) => (
+                <Container>
+                    <InputContainer {...field} type={type} placeholder={placeholder} />
+                    {error && <p style={{ color: "red"}}>{error.message}</p>}
+                </Container>
+            )}
+        /> 
     );
 };
 

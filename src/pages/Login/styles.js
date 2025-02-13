@@ -7,6 +7,10 @@ export const LoginContainer = styled.div`
     height: 280px;
     border-radius: 10px;
     padding: 20px;
+    display: flex
+;
+    flex-direction: column;
+    align-items: center;
 ` 
 
 export const Content = styled.div`
@@ -20,5 +24,32 @@ export const Content = styled.div`
 
 export const Title = styled.h1`
     color: darkblue;
-    margin-bottom: 30px;
+    font-size: 35px;
+    margin-bottom: 20px;
+    text-align: start;
+    width: 90%;
+`
+
+export const ContentText = styled.div`
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin-bottom: 15px;
+`
+
+export const Text = styled.a`
+    font-size: 14px;
+    color: gray;
+
+    &:hover {
+        color: black;
+        text-decoration: underline;
+    }
+`
+
+export const Form = styled.form`
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 `
