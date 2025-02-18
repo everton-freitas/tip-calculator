@@ -1,25 +1,46 @@
 import { useForm } from "react-hook-form";
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
-import { Content, Text, ContentText, LoginContainer, Title, Form } from "./styles";
+import { Content, ContentText, LoginContainer, Title, Form, TextA } from "./styles";
+import { StyledLink } from "../Registro/styles";
+import { useNavigate } from "react-router-dom";
+import { Header } from "../../components/Header";
 
 
 const Login = () => {
 
     const { control, handleSubmit } = useForm();
+    const navigate = useNavigate()
+    
+    const onSubmit = async (data) => {
+        try {
+            const response = await fetch(`http://localhost:3000/users?email=${data.email}&password=${data.password}`)
+            const users = await response.json();
+            if (users.length > 0) {
+                // console.log('login bem sucedido: ', users[0])
+                alert('Login realizado com sucesso!')
+                navigate('/inicio')
+            } else {
+                alert('Email ou senha incorretos!')
+            }
 
-    const onSubmit = (data) => {
-        console.log('Dados enviados: ', data)
+        } catch (err) {
+            console.error('Erro ao conectar com a API:', err)
+        }
     };
 
+    
+
+
     return (
+        <>
         <Content>
             <LoginContainer>
                 <Title>Login</Title>
                 <Form onSubmit={handleSubmit(onSubmit)}>
-            
+
                     <Input
-                        placeholder="Email"
+                        placeholder="Digite seu Email"
                         name="email"
                         control={control}
                         rules={{
@@ -29,10 +50,10 @@ const Login = () => {
                                 message: 'Formato de email inválido'
                             }
                         }}
-                     />
+                    />
                     <Input
                         type="password"
-                        placeholder="Senha"
+                        placeholder="Digite sua senha"
                         name="password"
                         control={control}
                         rules={{
@@ -42,20 +63,22 @@ const Login = () => {
                                 message: 'A senha deve ter no minimo 6 caracteres'
                             }
                         }}
-                     />
-            
-                <ContentText>
-            
-                    <Text>Esqueceu sua senha?</Text>
-                    <Text>Cadastre-se</Text>
-            
-                </ContentText>
-            
-                <Button type="submit">Entrar</Button>
-            
+                    />
+
+                    <ContentText>
+
+                        <TextA>Esqueceu sua senha?</TextA>
+                        <TextA><StyledLink to='/registro'>Cadastre-se</StyledLink></TextA>
+
+                    </ContentText>
+
+                    <Button type="submit" title="Entrar"></Button>
+
                 </Form>
             </LoginContainer>
         </Content>
+        </>
+
     )
 };
 

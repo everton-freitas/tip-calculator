@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 export const InputContainer = styled.input`
     width:90%;
-    height: 44px;
+    height: 42px;
     border: 1px solid darkblue;
-    border-radius: 20px;
+    border-radius: 5px;
     display: block;
     margin: auto;
     align-items: center;
@@ -18,4 +18,11 @@ export const InputContainer = styled.input`
 export const Container = styled.div`
     width: 100%;
 ` 
+
+export const ErrorMessage = styled.p`
+    color: red;
+    font-size: 15px;
+    text-align: center;
+    margin-bottom: 4px;
+`
 

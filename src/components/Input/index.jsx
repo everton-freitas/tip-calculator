@@ -1,5 +1,5 @@
 import { Controller } from "react-hook-form";
-import { InputContainer, Container } from "./styles";
+import { InputContainer, Container, ErrorMessage } from "./styles";
 
 const Input = ({name, control, rules, placeholder, type = 'text'}) => {
     return (
@@ -10,7 +10,7 @@ const Input = ({name, control, rules, placeholder, type = 'text'}) => {
             render={({ field, fieldState: { error } }) => (
                 <Container>
                     <InputContainer {...field} type={type} placeholder={placeholder} />
-                    {error && <p style={{ color: "red"}}>{error.message}</p>}
+                    {error && <ErrorMessage>{error.message}</ErrorMessage>}
                 </Container>
             )}
         /> 

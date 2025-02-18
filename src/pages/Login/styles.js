@@ -4,13 +4,15 @@ import styled from "styled-components";
 export const LoginContainer = styled.div`
     background-color: white;
     width: 400px;
-    height: 280px;
     border-radius: 10px;
     padding: 20px;
-    display: flex
-;
+    display: flex;
     flex-direction: column;
     align-items: center;
+
+    @media screen and (max-width:  768px) {
+
+    }
 ` 
 
 export const Content = styled.div`
@@ -20,6 +22,11 @@ export const Content = styled.div`
     background-color: darkblue;
     width: 100vw;
     height: 100vh;
+
+    @media screen and (max-width:768px ) {
+        align-items: flex-start;
+        padding-top: 20px;
+}
 `
 
 export const Title = styled.h1`
@@ -37,9 +44,10 @@ export const ContentText = styled.div`
     margin-bottom: 15px;
 `
 
-export const Text = styled.a`
-    font-size: 14px;
+export const TextA = styled.a`
+    font-size: 15px;
     color: gray;
+    margin-top: 3px;
 
     &:hover {
         color: black;
